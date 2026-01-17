@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Download } from "lucide-react";
 import "./App.css";
 import emailjs from "emailjs-com";
+
 
 export default function App() {
 
