@@ -85,9 +85,6 @@ export default function App() {
               <a href="https://github.com/Mohanpradeep32" target="_blank" rel="noreferrer">
                 GitHub
               </a>
-              <a className="project-livedemo" href="#" target="_blank" rel="noreferrer">
-                Live Demo
-              </a>
             </div>
           </div>
 
@@ -111,9 +108,6 @@ export default function App() {
             <div className="project-actions">
               <a href="https://github.com/Mohanpradeep32" target="_blank" rel="noreferrer">
                 GitHub
-              </a>
-              <a className="project-livedemo" href="#" target="_blank" rel="noreferrer">
-                Live Demo
               </a>
             </div>
           </div>
@@ -139,9 +133,6 @@ export default function App() {
               <a href="https://github.com/Mohanpradeep32" target="_blank" rel="noreferrer">
                 GitHub
               </a>
-              <a className="project-livedemo" href="#" target="_blank" rel="noreferrer">
-                Live Demo
-              </a>
             </div>
           </div>
 
@@ -165,9 +156,6 @@ export default function App() {
             <div className="project-actions">
               <a href="https://github.com/Mohanpradeep32" target="_blank" rel="noreferrer">
                 GitHub
-              </a>
-              <a className="project-livedemo" href="#" target="_blank" rel="noreferrer">
-                Research Paper
               </a>
             </div>
           </div>
