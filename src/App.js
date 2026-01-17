@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import "./App.css";
 import emailjs from "emailjs-com";
+import { useState } from "react";
 
 
 export default function App() {
+  const [notification, setNotification] = useState(null);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -16,46 +18,134 @@ export default function App() {
         "Qxnrf5eBOqxOFjmXC"
       )
       .then(() => {
-        alert("Message sent successfully!");
+        setNotification({
+          type: "success",
+          message: "Message sent successfully. I’ll get back to you soon!"
+        });
         e.target.reset();
       })
       .catch(() => {
-        alert("Failed to send message");
+        setNotification({
+          type: "error",
+          message: "Something went wrong. Please try again later."
+        });
       });
+
+    // Auto-hide after 4 seconds
+    setTimeout(() => {
+      setNotification(null);
+    }, 4000);
   };
+
+
 
   return (
     <div className="app">
 
       {/* Hero */}
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="hero-section"
-      >
-        <div className="hero-overlay">
-          <h1>Machavarapu Mohan Durga Pradeep</h1>
-          <p>Associate Software Engineer | Java | Spring Boot | FinTech Backend</p>
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="hero-section"
+        >
+          <div className="hero-container">
 
-          <div className="hero-icons">
-            <a href="https://github.com/Mohanpradeep32" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="https://www.linkedin.com/in/mohan-machavarapu-b00064206/" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="mailto:mohanmachavarapu117@gmail.com">Email</a>
+            {/* Left: Profile Image */}
+            <div className="hero-image">
+              <img src="/mohan.jpg" alt="Mohan Pradeep Profile" />
+            </div>
+
+            {/* Right: Details */}
+            <div className="hero-content">
+              <h1>Machavarapu Mohan Durga Pradeep</h1>
+              <p className="hero-role">
+                Full Stack Software Engineer (2+ Years) · Java · Spring Boot · React · FinTech
+              </p>
+
+              <div className="hero-icons">
+                <a href="https://github.com/Mohanpradeep32" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/mohan-machavarapu-b00064206/" target="_blank" rel="noreferrer">LinkedIn</a>
+                <a href="https://leetcode.com/u/mohanmachavarapu117/" target="_blank" rel="noreferrer"> LeetCode </a>
+                <a href="mailto:mohanmachavarapu117@gmail.com">Email</a>
+              </div>
+
+              <a href="/resume.pdf" download className="resume-btn">
+                Download Resume
+              </a>
+            </div>
+
           </div>
+        </motion.section>
 
-          <a href="/resume.pdf" download className="resume-btn">
-            Download Resume
-          </a>
-        </div>
-      </motion.section>
 
 
       {/* Skills */}
       <section className="skills">
-        {["Java", "Spring Boot", "React", "MySQL"].map(skill => (
+        {[
+            "Java",
+            "Python",
+            "Spring Boot",
+            "REST APIs",
+            "Microservices",
+            "React",
+            "JavaScript",
+            "HTML & CSS",
+            "MySQL",
+            "PostgreSQL",
+            "Git",
+            "Data Structures",
+            "AWS Fundamentals",
+            "TestNG"
+          ].map(skill => (
           <div className="skill-card" key={skill}>{skill}</div>
         ))}
+      </section>
+
+      {/* Experience */}
+       <section className="experience">
+        <h2>Professional Experience</h2>
+
+        <div className="experience-grid">
+
+          <div className="experience-card">
+            <h3>Pennant Technologies Pvt Ltd</h3>
+            <span className="experience-role">
+              Software Engineer · FinTech Domain · Jul 2024 – Present
+            </span>
+            <ul>
+              <li>Developing enterprise-grade Loan Origination & Management systems.</li>
+              <li>Building scalable REST APIs using Java and Spring Boot.</li>
+              <li>Integrating React UIs with backend services.</li>
+              <li>Optimizing SQL queries and backend performance.</li>
+            </ul>
+          </div>
+
+          <div className="experience-card">
+            <h3>Pennant Technologies Pvt Ltd</h3>
+            <span className="experience-role">
+              Associate Software Engineer (Trainee) · Jan 2024 – Jun 2024
+            </span>
+            <ul>
+              <li>Trained in Java, JDBC, Servlets, JSP, and SQL.</li>
+              <li>Built CRUD modules using MVC architecture.</li>
+              <li>Worked on backend debugging and API integration.</li>
+            </ul>
+          </div>
+
+          <div className="experience-card">
+            <h3>NIT Andhra Pradesh</h3>
+            <span className="experience-role">
+              Research Intern · May 2023 – Jun 2023
+            </span>
+            <ul>
+              <li>Researched Brain Tumor Classification using Deep Learning.</li>
+              <li>Built PyTorch models improving accuracy by 25%.</li>
+              <li>Worked with MRI image datasets and preprocessing.</li>
+            </ul>
+          </div>
+
+        </div>
       </section>
 
       {/* Projects */}
@@ -77,9 +167,11 @@ export default function App() {
             </div>
 
             <p>
-              Full-stack loan processing system with automated approval workflows
-              and 15+ REST APIs for onboarding, repayments, and loan management.
+              Enterprise-grade loan management platform used in FinTech workflows.
+              Built secure REST APIs for customer onboarding, loan approvals,
+              repayments, and EMI calculations, supporting high-volume transactions.
             </p>
+
 
             <div className="project-actions">
               <a href="https://github.com/Mohanpradeep32" target="_blank" rel="noreferrer">
@@ -176,6 +268,13 @@ export default function App() {
           <button type="submit">Send Message</button>
         </form>
       </section>
+
+      
+      {notification && (
+        <div className={`toast ${notification.type}`}>
+          {notification.message}
+        </div>
+      )}
 
       <footer className="footer">
         © 2026 Mohan Pradeep
