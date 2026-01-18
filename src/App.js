@@ -42,6 +42,23 @@ export default function App() {
   return (
     <div className="app">
 
+      {/* Header / Navbar */}
+      <header className="header">
+        <div className="header-container">
+          <div className="logo">Mohan</div>
+
+          <nav className="nav">
+            <a href="#home">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+
       {/* Hero */}
         <motion.section
           initial={{ opacity: 0, y: 40 }}
@@ -49,7 +66,7 @@ export default function App() {
           transition={{ duration: 0.6 }}
           className="hero-section"
         >
-          <div className="hero-container">
+          <div className="hero-container" id="home">
 
             {/* Left: Profile Image */}
             <div className="hero-image">
@@ -81,8 +98,11 @@ export default function App() {
 
 
       {/* Skills */}
-      <section className="skills">
-        {[
+      <section className="skills" id="skills">
+        <h2>Technical Skills</h2>
+
+        <div className="skills-grid">
+          {[
             "Java",
             "Python",
             "Spring Boot",
@@ -98,12 +118,16 @@ export default function App() {
             "AWS Fundamentals",
             "TestNG"
           ].map(skill => (
-          <div className="skill-card" key={skill}>{skill}</div>
-        ))}
+            <div className="skill-card" key={skill}>
+              {skill}
+            </div>
+          ))}
+        </div>
       </section>
 
+
       {/* Experience */}
-       <section className="experience">
+       <section className="experience" id="experience">
         <h2>Professional Experience</h2>
 
         <div className="experience-grid">
@@ -149,7 +173,7 @@ export default function App() {
       </section>
 
       {/* Projects */}
-      <section className="projects">
+      <section className="projects" id = "projects">
         <h2>Projects</h2>
 
         <div className="project-grid">
@@ -255,10 +279,22 @@ export default function App() {
         </div>
       </section>
 
+      {/* Education */}
+      <section className="education" id="education">
+        <h2>Education</h2>
+
+        <div className="education-grid">
+          <div className="education-card">
+            <h3>Jawaharlal Nehru Technological University, Gurajada (JNTU-GV)</h3>
+            <span>B.Tech (Honors) – Information Technology</span>
+            <p className="education-meta">CGPA: <strong>8.7</strong></p>
+          </div>
+        </div>
+      </section>
 
 
       {/* Contact */}
-      <section className="contact">
+      <section className="contact" id="contact">
         <h2>Contact Me</h2>
 
         <form onSubmit={sendEmail}>
