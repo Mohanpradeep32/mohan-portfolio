@@ -2,7 +2,7 @@
 
 This repository contains my **personal portfolio website**, built using **React**, to showcase my professional experience, technical skills, and real-world projects in the **FinTech domain**.
 
-🔗 **Live Demo:** https://mohanpradeepportfolio.vercel.app
+🔗 **Live Demo:** https://mohanpradeepportfolio-5iyia4x7k.vercel.app/
 
 ---
 
